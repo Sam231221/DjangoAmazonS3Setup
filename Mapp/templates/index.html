@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container p-3 m-3">
+  <div class="row">
+    {% for i in posts %}
+    <div class="col-md-3">
+      <div class="card">
+        <img src="{{i.image.url}}" alt="img">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="col-md-12 bg-light">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-12  mx-auto">
+
+                <form class="account-form p-4 rounded shadow-sm" method="post" enctype='multipart/form-data'>
+
+                  {% csrf_token %}
+
+                  <p class="h1 mb-4 font-weight-bold">Post Form</p>
+                  <hr>
+
+                  {% if upform.errors %}
+                  <div class="alert alert-primary" role="alert">
+                    Error!
+                  </div>
+                  {% endif %}
+
+                  {{ upform }}
+
+                  <button class="btn btn-dark btn-block py-2 mb-4 mt-5 font-weight-bold" type="submit"
+                    value="Log-in">Upload Image</button>
+
+                  <p class="small font-weight-bold text-center pb-3">
+                    <a href="">Just an example from the team at www.example.com</a>
+                  </p>
+
+                  <hr class="mb-3">
+                  <p class="small text-center">By signing in to your account, you agree to Blog <a href="">Terms of
+                      Service</a> and
+                    consent to
+                    our <a href="">Cookie Policy</a> and <a href="">Privacy Policy</a>. This site is not
+                    protected
+                    by reCAPTCHA and
+                    is a demonstration website
+                    for learning purposes only.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
